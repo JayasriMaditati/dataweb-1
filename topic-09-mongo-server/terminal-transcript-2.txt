@@ -1,0 +1,472 @@
+$ ssh root@165.227.92.158
+The authenticity of host '165.227.92.158 (165.227.92.158)' can't be established.
+ED25519 key fingerprint is SHA256:UYgNL/9TeHoNO9id9WWf5RrKNLd4ZGcBTkpTfoXaQwc.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '165.227.92.158' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.10 (GNU/Linux 5.19.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Dec  1 02:06:30 UTC 2022
+
+  System load:  0.0               Users logged in:       0
+  Usage of /:   3.9% of 48.30GB   IPv4 address for eth0: 165.227.92.158
+  Memory usage: 13%               IPv4 address for eth0: 10.10.0.6
+  Swap usage:   0%                IPv4 address for eth1: 10.136.0.3
+  Processes:    92
+
+6 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+
+*** System restart required ***
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@mongo-demo-02:~# service --status-all
+ [ + ]  apparmor
+ [ + ]  apport
+ [ - ]  console-setup.sh
+ [ + ]  cron
+ [ - ]  cryptdisks
+ [ - ]  cryptdisks-early
+ [ + ]  dbus
+ [ - ]  grub-common
+ [ - ]  hwclock.sh
+ [ - ]  irqbalance
+ [ - ]  iscsid
+ [ - ]  keyboard-setup.sh
+ [ + ]  kmod
+ [ - ]  lvm2
+ [ - ]  lvm2-lvmpolld
+ [ + ]  multipath-tools
+ [ - ]  open-iscsi
+ [ - ]  open-vm-tools
+ [ + ]  plymouth
+ [ + ]  plymouth-log
+ [ + ]  procps
+ [ - ]  rsync
+ [ - ]  screen-cleanup
+ [ + ]  ssh
+ [ + ]  udev
+ [ + ]  ufw
+ [ + ]  unattended-upgrades
+ [ - ]  uuidd
+root@mongo-demo-02:~# mongo
+Command 'mongo' not found, did you mean:
+  command 'mono' from deb mono-runtime (6.8.0.105+dfsg-3.2)
+Try: apt install <deb name>
+root@mongo-demo-02:~# wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+root@mongo-demo-02:~# sudo apt-get install gnupg
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+gnupg is already the newest version (2.2.35-3ubuntu1).
+gnupg set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 7 not upgraded.
+root@mongo-demo-02:~# wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+root@mongo-demo-02:~# 
+Create a list file for MongoDB.
+Create the list file /etc/apt/sources.list.d/mongodb-org-6.0.list for your version of Ubuntu.
+
+Click on the appropriate tab for your version of Ubuntu. If you are unsure of what Ubuntu version the host is running, open a terminal or shell on the host and execute lsb_release -dc.
+
+
+Ubuntu 20.04 (Focal)
+
+Ubuntu 18.04 (Bionic)
+
+Ubuntu 16.04 (Xenial)
+The following instruction is for Ubuntu 20.04 (Focal).
+
+Create the /etc/apt/sources.list.d/mongodb-org-6.0.list file for Ubuntu 20.04 (Focal):
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+Create: command not found
+Create: command not found
+Command 'Click' not found, did you mean:
+  command 'klick' from deb klick (0.12.2-4.1)
+Try: apt install <deb name>
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse
+root@mongo-demo-02:~# echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse
+root@mongo-demo-02:~# echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse
+root@mongo-demo-02:~# sudo apt-get update
+Get:1 http://mirrors.digitalocean.com/ubuntu kinetic InRelease [267 kB]
+Hit:2 https://repos.insights.digitalocean.com/apt/do-agent main InRelease      
+Hit:3 https://repos-droplet.digitalocean.com/apt/droplet-agent main InRelease  
+Ign:4 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 InRelease      
+Get:5 http://mirrors.digitalocean.com/ubuntu kinetic-updates InRelease [109 kB]
+Get:6 http://security.ubuntu.com/ubuntu kinetic-security InRelease [109 kB]
+Get:7 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 Release [4408 B]
+Get:8 http://mirrors.digitalocean.com/ubuntu kinetic-backports InRelease [99.9 kB]
+Get:9 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 Release.gpg [801 B]
+Get:10 http://mirrors.digitalocean.com/ubuntu kinetic-updates/main amd64 Packages [110 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu kinetic-updates/main Translation-en [33.4 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu kinetic-updates/main amd64 c-n-f Metadata [2300 B]
+Get:13 http://mirrors.digitalocean.com/ubuntu kinetic-updates/restricted amd64 c-n-f Metadata [308 B]
+Get:14 http://mirrors.digitalocean.com/ubuntu kinetic-updates/universe amd64 Packages [58.4 kB]
+Get:15 http://mirrors.digitalocean.com/ubuntu kinetic-updates/universe Translation-en [22.4 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu kinetic-updates/universe amd64 c-n-f Metadata [2036 B]
+Get:17 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse arm64 Packages [5125 B]
+Get:18 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 Packages [6083 B]
+Get:19 http://security.ubuntu.com/ubuntu kinetic-security/main amd64 Packages [97.4 kB]
+Get:20 http://security.ubuntu.com/ubuntu kinetic-security/main Translation-en [29.4 kB]
+Get:21 http://security.ubuntu.com/ubuntu kinetic-security/main amd64 c-n-f Metadata [1884 B]
+Get:22 http://security.ubuntu.com/ubuntu kinetic-security/restricted amd64 c-n-f Metadata [308 B]
+Get:23 http://security.ubuntu.com/ubuntu kinetic-security/universe amd64 c-n-f Metadata [1932 B]
+Fetched 960 kB in 7s (129 kB/s)   
+Reading package lists... Done
+W: https://repos.insights.digitalocean.com/apt/do-agent/dists/main/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/6.0/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+root@mongo-demo-02:~# sudo apt-get install -y mongodb-org
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org-database
+  mongodb-org-database-tools-extra mongodb-org-mongos mongodb-org-server
+  mongodb-org-shell mongodb-org-tools
+The following NEW packages will be installed:
+  mongodb-database-tools mongodb-mongosh mongodb-org mongodb-org-database
+  mongodb-org-database-tools-extra mongodb-org-mongos mongodb-org-server
+  mongodb-org-shell mongodb-org-tools
+0 upgraded, 9 newly installed, 0 to remove and 7 not upgraded.
+Need to get 139 MB of archives.
+After this operation, 464 MB of additional disk space will be used.
+Get:1 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-database-tools amd64 100.6.1 [47.9 MB]
+Get:2 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-mongosh amd64 1.6.1 [37.7 MB]
+Get:3 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-shell amd64 6.0.3 [2986 B]
+Get:4 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-server amd64 6.0.3 [31.2 MB]
+Get:5 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-mongos amd64 6.0.3 [22.1 MB]
+Get:6 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-database-tools-extra amd64 6.0.3 [7788 B]
+Get:7 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-database amd64 6.0.3 [3424 B]
+Get:8 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org-tools amd64 6.0.3 [2768 B]
+Get:9 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0/multiverse amd64 mongodb-org amd64 6.0.3 [2804 B]
+Fetched 139 MB in 2s (74.4 MB/s) 
+Selecting previously unselected package mongodb-database-tools.
+(Reading database ... 65174 files and directories currently installed.)
+Preparing to unpack .../0-mongodb-database-tools_100.6.1_amd64.deb ...
+Unpacking mongodb-database-tools (100.6.1) ...
+Selecting previously unselected package mongodb-mongosh.
+Preparing to unpack .../1-mongodb-mongosh_1.6.1_amd64.deb ...
+Unpacking mongodb-mongosh (1.6.1) ...
+Selecting previously unselected package mongodb-org-shell.
+Preparing to unpack .../2-mongodb-org-shell_6.0.3_amd64.deb ...
+Unpacking mongodb-org-shell (6.0.3) ...
+Selecting previously unselected package mongodb-org-server.
+Preparing to unpack .../3-mongodb-org-server_6.0.3_amd64.deb ...
+Unpacking mongodb-org-server (6.0.3) ...
+Selecting previously unselected package mongodb-org-mongos.
+Preparing to unpack .../4-mongodb-org-mongos_6.0.3_amd64.deb ...
+Unpacking mongodb-org-mongos (6.0.3) ...
+Selecting previously unselected package mongodb-org-database-tools-extra.
+Preparing to unpack .../5-mongodb-org-database-tools-extra_6.0.3_amd64.deb ...
+Unpacking mongodb-org-database-tools-extra (6.0.3) ...
+Selecting previously unselected package mongodb-org-database.
+Preparing to unpack .../6-mongodb-org-database_6.0.3_amd64.deb ...
+Unpacking mongodb-org-database (6.0.3) ...
+Selecting previously unselected package mongodb-org-tools.
+Preparing to unpack .../7-mongodb-org-tools_6.0.3_amd64.deb ...
+Unpacking mongodb-org-tools (6.0.3) ...
+Selecting previously unselected package mongodb-org.
+Preparing to unpack .../8-mongodb-org_6.0.3_amd64.deb ...
+Unpacking mongodb-org (6.0.3) ...
+Setting up mongodb-mongosh (1.6.1) ...
+Setting up mongodb-org-server (6.0.3) ...
+Adding system user `mongodb' (UID 113) ...
+Adding new user `mongodb' (UID 113) with group `nogroup' ...
+Not creating home directory `/home/mongodb'.
+Adding group `mongodb' (GID 121) ...
+Done.
+Adding user `mongodb' to group `mongodb' ...
+Done.
+Setting up mongodb-org-shell (6.0.3) ...
+Setting up mongodb-database-tools (100.6.1) ...
+Setting up mongodb-org-mongos (6.0.3) ...
+Setting up mongodb-org-database-tools-extra (6.0.3) ...
+Setting up mongodb-org-database (6.0.3) ...
+Setting up mongodb-org-tools (6.0.3) ...
+Setting up mongodb-org (6.0.3) ...
+Processing triggers for man-db (2.10.2-2) ...
+Scanning processes...                                                           
+Scanning candidates...                                                          
+Scanning processor microcode...                                                 
+Scanning linux images...                                                        
+
+Running kernel seems to be up-to-date.
+
+Failed to check for processor microcode upgrades.
+
+Restarting services...
+ /etc/needrestart/restart.d/systemd-manager
+ systemctl restart packagekit.service polkit.service ssh.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-timesyncd.service systemd-udevd.service
+Service restarts being deferred:
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart systemd-logind.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ root @ user manager service: systemd[16142]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@mongo-demo-02:~# mongo
+Command 'mongo' not found, did you mean:
+  command 'mono' from deb mono-runtime (6.8.0.105+dfsg-3.2)
+Try: apt install <deb name>
+root@mongo-demo-02:~# mongosh
+Current Mongosh Log ID:	63880e36cc39e319bb0588c3
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+root@mongo-demo-02:~# ps --no-headers -o comm 1
+systemd
+root@mongo-demo-02:~# sudo systemctl start mongod
+sudo systemctl start mongod
+root@mongo-demo-02:~# service status
+status: unrecognized service
+root@mongo-demo-02:~# service --status-all
+ [ + ]  apparmor
+ [ + ]  apport
+ [ - ]  console-setup.sh
+ [ + ]  cron
+ [ - ]  cryptdisks
+ [ - ]  cryptdisks-early
+ [ + ]  dbus
+ [ - ]  grub-common
+ [ - ]  hwclock.sh
+ [ - ]  irqbalance
+ [ - ]  iscsid
+ [ - ]  keyboard-setup.sh
+ [ + ]  kmod
+ [ - ]  lvm2
+ [ - ]  lvm2-lvmpolld
+ [ + ]  multipath-tools
+ [ - ]  open-iscsi
+ [ - ]  open-vm-tools
+ [ + ]  plymouth
+ [ + ]  plymouth-log
+ [ + ]  procps
+ [ - ]  rsync
+ [ - ]  screen-cleanup
+ [ + ]  ssh
+ [ + ]  udev
+ [ + ]  ufw
+ [ + ]  unattended-upgrades
+ [ - ]  uuidd
+root@mongo-demo-02:~# systemctl status mongod
+● mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; disabled; preset: enab>
+     Active: active (running) since Thu 2022-12-01 02:16:13 UTC; 48s ago
+       Docs: https://docs.mongodb.org/manual
+   Main PID: 17744 (mongod)
+     Memory: 62.6M
+        CPU: 916ms
+     CGroup: /system.slice/mongod.service
+             └─17744 /usr/bin/mongod --config /etc/mongod.conf
+
+Dec 01 02:16:13 mongo-demo-02 systemd[1]: Started MongoDB Database Server.
+root@mongo-demo-02:~# mongosh
+Current Mongosh Log ID:	63880eb53b47318caef9f2a0
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+Using MongoDB:		6.0.3
+Using Mongosh:		1.6.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2022-12-01T02:16:13.608+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2022-12-01T02:16:14.292+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2022-12-01T02:16:14.292+00:00: vm.max_map_count is too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> db.disableFreeMonitoring()
+{ ok: 1 }
+test> exit()
+root@mongo-demo-02:~# systemctl enable mongod
+Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /lib/systemd/system/mongod.service.
+root@mongo-demo-02:~# mongosh
+Current Mongosh Log ID:	63880fdeb181e39a95d7b61d
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+Using MongoDB:		6.0.3
+Using Mongosh:		1.6.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2022-12-01T02:16:13.608+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2022-12-01T02:16:14.292+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2022-12-01T02:16:14.292+00:00: vm.max_map_count is too low
+------
+
+test> use admin
+switched to db admin
+admin> db.createUser(
+...   {
+...     user: "myUserAdmin",
+...     pwd: passwordPrompt(), // or cleartext password
+...     roles: [
+...       { role: "userAdminAnyDatabase", db: "admin" },
+...       { role: "readWriteAnyDatabase", db: "admin" }
+...     ]
+...   }
+... )
+Enter password
+*********{ ok: 1 }
+admin> db.adminCommand( { shutdown: 1 } )
+MongoNetworkError: connection 6 to 127.0.0.1:27017 closed
+admin> 
+root@mongo-demo-02:~# systemctl stop mongod
+root@mongo-demo-02:~# cd /etc
+root@mongo-demo-02:/etc# ls
+NetworkManager          inputrc                 pollinate
+PackageKit              iproute2                profile
+X11                     iscsi                   profile.d
+adduser.conf            issue                   protocols
+adduser.conf.dpkg-save  issue.net               python3
+alternatives            kernel                  python3.10
+apparmor                kernel-img.conf         rc0.d
+apparmor.d              landscape               rc1.d
+apport                  ld.so.cache             rc2.d
+apt                     ld.so.conf              rc3.d
+bash.bashrc             ld.so.conf.d            rc4.d
+bash_completion         ldap                    rc5.d
+bash_completion.d       legal                   rc6.d
+bindresvport.blacklist  libaudit.conf           rcS.d
+binfmt.d                libblockdev             resolv.conf
+byobu                   libnl-3                 rmt
+ca-certificates         locale.alias            rpc
+ca-certificates.conf    locale.gen              rsyslog.conf
+cloud                   localtime               rsyslog.d
+console-setup           logcheck                screenrc
+cron.d                  login.defs              security
+cron.daily              logrotate.conf          selinux
+cron.hourly             logrotate.d             services
+cron.monthly            lsb-release             sgml
+cron.weekly             lvm                     shadow
+crontab                 machine-id              shadow-
+cryptsetup-initramfs    magic                   shells
+crypttab                magic.mime              skel
+dbus-1                  manpath.config          sos
+debconf.conf            mdadm                   ssh
+debian_version          mime.types              ssl
+default                 mke2fs.conf             subgid
+deluser.conf            modprobe.d              subuid
+depmod.d                modules                 sudo.conf
+dhcp                    modules-load.d          sudo_logsrvd.conf
+dpkg                    mongod.conf             sudoers
+e2scrub.conf            mtab                    sudoers.d
+ec2_version             multipath               sysctl.conf
+environment             multipath.conf          sysctl.d
+ethertypes              nanorc                  systemd
+fstab                   needrestart             terminfo
+fuse.conf               netconfig               timezone
+gai.conf                netplan                 tmpfiles.d
+gprofng.rc              network                 ubuntu-advantage
+groff                   networkd-dispatcher     ucf.conf
+group                   networks                udev
+group-                  newt                    ufw
+grub.d                  nftables.conf           update-manager
+gshadow                 nsswitch.conf           update-motd.d
+gshadow-                opt                     update-notifier
+gss                     os-release              usb_modeswitch.conf
+hdparm.conf             overlayroot.conf        usb_modeswitch.d
+host.conf               overlayroot.local.conf  vim
+hostname                pam.conf                vmware-tools
+hosts                   pam.d                   vtrgb
+hosts.allow             passwd                  wgetrc
+hosts.deny              passwd-                 xattr.conf
+init                    perl                    xdg
+init.d                  pm                      zsh_command_not_found
+initramfs-tools         polkit-1
+root@mongo-demo-02:/etc# 
+root@mongo-demo-02:/etc# 
+root@mongo-demo-02:/etc# 
+root@mongo-demo-02:/etc# vi mongod.conf
+root@mongo-demo-02:/etc# systemctl start mongod
+root@mongo-demo-02:/etc# mongosh
+Current Mongosh Log ID:	638811881dfc89616f1a7072
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1
+Using MongoDB:		6.0.3
+Using Mongosh:		1.6.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> use admin
+switched to db admin
+admin> show collections
+MongoServerError: command listCollections requires authentication
+admin> db.auth("myUserAdmin", passwordPrompt())
+Enter password
+*********{ ok: 1 }
+admin> show collections
+system.users
+system.version
+admin> 
+
+
+---- THIS IS ON THE MAC CONNECTING TO THE INSTANCE DATABASE ----
+
+$ mongosh mongodb://165.227.92.158:27017
+Current Mongosh Log ID:	638814b304641d71cdf98ef7
+Connecting to:		mongodb://165.227.92.158:27017/?directConnection=true&appName=mongosh+1.6.0
+Using MongoDB:		6.0.3
+Using Mongosh:		1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> db.auth("myUserAdmin", passwordPrompt())
+Enter password
+MongoServerError: Authentication failed.
+test> db.auth("myUserAdmin", passwordPrompt())
+Enter password
+MongoServerError: Authentication failed.
+test> use admin
+switched to db admin
+admin> db.auth("myUserAdmin", passwordPrompt())
+Enter password
+*********{ ok: 1 }
+admin> show collections
+system.users
+system.version
+admin> 
+
+
