@@ -1,4 +1,4 @@
-from bottle import default_app, route, get, post, template, request, redirect
+from bottle import default_app, route, get, post, template, request, redirect, run
 
 import database
 
@@ -37,5 +37,6 @@ def post_edit(id):
     database.update_item(id, description)
     redirect('/list')
 
-application = default_app()
+# application = default_app()
+run(host='localhost', port=8080)
 

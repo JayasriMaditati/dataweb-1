@@ -1,7 +1,7 @@
 # database.py - functions for managing database
 
 from pymongo import MongoClient
-client = MongoClient()
+client = MongoClient("mongodb+srv://alpha:alpha123@soliton.o2qlmbp.mongodb.net/?retryWrites=true&w=majority")
 
 from bson.objectid import ObjectId
 
